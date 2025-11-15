@@ -1,14 +1,17 @@
 import React from "react";
 
-const MovieCard = ({ movie })=> {
-    return(
-        <div className="movie" onClick={() => {alert(movie.Title)}}>
+const MovieCard = ({ movie, onSelect }) => {
+    return (
+        <div className="movie" onClick={() => onSelect(movie.imdbID)}>
             <div>
                 <p>{movie.Year}</p>
             </div>
 
             <div>
-                <img src={movie.Poster} alt={movie.Title} />
+                <img 
+                    src={movie.Poster !== "N/A" ? movie.Poster : "https://placehold.co/300x450"} 
+                    alt={movie.Title} 
+                />
             </div>
 
             <div>
@@ -16,8 +19,7 @@ const MovieCard = ({ movie })=> {
                 <h3>{movie.Title}</h3>
             </div>
         </div>
-    )
-    
-}
+    );
+};
 
 export default MovieCard;
